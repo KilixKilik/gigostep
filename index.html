@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GigoStep</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Background Image with Blur */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('icon/Gigostep.png') no-repeat center center/cover;
+            filter: blur(15px);
+            z-index: -1;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .btn:hover {
+            background-color: #4682b4;
+        }
+
+        .btn:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .btn:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .btn:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Side Menu */
+        .sidebar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background: #242424;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            padding-top: 50px;
+        }
+
+        .sidebar button {
+            width: 80%;
+            margin: 15px auto;
+            padding: 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .sidebar button:hover {
+            background-color: #555;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Добро пожаловать в GigoStep</h1>
+        <button class="btn" onclick="openReleases()">Ожидаемые релизы</button>
+        <button class="btn" onclick="openArtists()">Артисты</button>
+        <button class="btn" onclick="window.location.href='no.html'">Релизы</button>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <button onclick="window.location.href='https://next.music.yandex.ru/artist/23357238'">Limpus</button>
+        <button onclick="window.location.href='https://next.music.yandex.ru/artist/23305621'">OneStep</button>
+        <button onclick="window.location.href='https://next.music.yandex.ru/artist/11161339'">Kilix</button>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <script>
+        function openReleases() {
+            window.location.href = 'album.html';
+        }
+
+        function openArtists() {
+            document.getElementById('sidebar').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeMenu() {
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
