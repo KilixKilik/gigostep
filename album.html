@@ -56,10 +56,21 @@
             font-size: 14px;
             color: #aaa;
         }
+
+        .stats {
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #aaa;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Статистика посещений -->
+        <div class="stats">
+            <p>Количество посещений этой страницы: <span id="visit-count">0</span></p>
+        </div>
+
         <h1>Ожидаемые релизы</h1>
         <div class="release">
             <img src="icon/assets.png" alt="Assets">
@@ -89,13 +100,19 @@
                 <p>OneStep - 1 песня / 09-11.12.24</p>
             </div>
         </div>
-        <div class="release">
-            <img src="icon/what.png" alt="A">
-            <div>
-                <h3>???</h3>
-                <p>???</p>
-            </div>
-        </div>
     </div>
+
+    <script>
+        // Проверяем и обновляем количество посещений
+        if (localStorage.getItem('visitCount')) {
+            let count = parseInt(localStorage.getItem('visitCount'));
+            count++;
+            localStorage.setItem('visitCount', count);
+            document.getElementById('visit-count').textContent = count;
+        } else {
+            localStorage.setItem('visitCount', 1);
+            document.getElementById('visit-count').textContent = 1;
+        }
+    </script>
 </body>
 </html>
